@@ -85,6 +85,16 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Stuff You Don\'t want to Read About',
+    date: 'Sep 7th, 2019',
+    firstParagraph: `blah blah blah blah blah blah blah blah blah blah blah blah. blah blah blah blah blah blah blah blah blah blah blah blah. 
+            blah blah blah blah blah blah blah blah blah blah blah.  blah blah blah blah blah blah blah blah blah blah blah blah.`, 
+    secondParagraph: `blah blah blah blah blah blah blah blah blah blah blah blah. blah blah blah blah blah blah blah blah blah blah blah blah. 
+            blah blah blah blah blah blah blah blah blah blah blah.  blah blah blah blah blah blah blah blah blah blah blah blah.`, 
+    thirdParagraph: `blah blah blah blah blah blah blah blah blah blah blah blah. blah blah blah blah blah blah blah blah blah blah blah blah. 
+            blah blah blah blah blah blah blah blah blah blah blah.  blah blah blah blah blah blah blah blah blah blah blah blah.`              
   }
 ];
 
@@ -112,3 +122,46 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function articleCreator(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  let div = document.createElement('div');
+  div.classList.add(".article");
+  let h2 = document.createElement('h2')
+  h2.innerText = title;
+  div.appendChild(h2);
+  let p1 = document.createElement('p')
+  p1.innerText = date;
+  p1.classList.add('date');
+  div.appendChild(p1);
+  let p2 = document.createElement('p')
+  p2.innerText = firstParagraph;
+  div.appendChild(p2);
+  let p3 = document.createElement('p')
+  p3.innerText = secondParagraph;
+  div.appendChild(p3);
+  let p4 = document.createElement('p')
+  p4.innerText = thirdParagraph;
+  div.appendChild(p4);
+  let span = document.createElement('span');
+  span.classList.add('.expandButton');
+  span.addEventListener('click', () => {
+    span.classList.toggle('.article-open');
+  })
+  div.appendChild(span);
+
+  return div;
+}
+//add container that articles are to be added to
+let articles = document.querySelector('.articles');
+
+//map out data and create/save newArticles for use later
+let newArticle = data.map((data) => {
+  let newArticle = articleCreator(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph)
+  return newArticle;
+});
+
+//add articles to container with forEach
+newArticle.forEach((component) => {
+  articles.appendChild(component);
+});
+
