@@ -46,8 +46,8 @@ function menuCreator(arr) {
   return div;
 };
 let menuButton = document.querySelector('.menu-button');
-menuButton.addEventListener('click', () => {
-  menuButton.classList.toggle(menuCreator(menuItems));
+menuButton.addEventListener('click', (event) => {
+  menuButton.classList.toggle('men--open');
 });
 
 // let header = document.querySelector('header');

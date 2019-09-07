@@ -125,7 +125,7 @@ const data = [
 
 function articleCreator(title, date, firstParagraph, secondParagraph, thirdParagraph) {
   let div = document.createElement('div');
-  div.classList.add(".article");
+  div.classList.add("article");
   let h2 = document.createElement('h2')
   h2.innerText = title;
   div.appendChild(h2);
@@ -143,12 +143,14 @@ function articleCreator(title, date, firstParagraph, secondParagraph, thirdParag
   p4.innerText = thirdParagraph;
   div.appendChild(p4);
   let span = document.createElement('span');
-  span.classList.add('.expandButton');
-  span.addEventListener('click', () => {
-    span.classList.toggle('.article-open');
-  })
+  span.classList.add('expandButton');
+  span.textContent = 'click Here';
   div.appendChild(span);
-
+  span.addEventListener('click', () => {
+  console.log('hello world')
+    div.classList.toggle('article-open');
+  });
+  console.log(span)
   return div;
 }
 //add container that articles are to be added to
