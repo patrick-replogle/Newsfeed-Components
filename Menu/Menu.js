@@ -47,12 +47,11 @@ function menuCreator(arr) {
     li.textContent = element;
     ul.appendChild(li);
   });
-  
+
   div.appendChild(ul);
 
   menuButton.addEventListener('click', () => {
-    let menu = document.querySelector('.menu')
-    menu.classList.toggle('menu--open');
+    div.classList.toggle('menu--open');
   });
 
   return div;

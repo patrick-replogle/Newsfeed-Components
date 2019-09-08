@@ -123,6 +123,8 @@ const data = [
 
 */
 
+//function to create the articles 
+
 function articleCreator(title, date, firstParagraph, secondParagraph, thirdParagraph) {
   let div = document.createElement('div');
   div.classList.add("article");
@@ -149,7 +151,7 @@ function articleCreator(title, date, firstParagraph, secondParagraph, thirdParag
   span.addEventListener('click', () => {
     div.classList.toggle('article-open');
   });
-  console.log(span)
+
   return div;
 }
 //add container that articles are to be added to
