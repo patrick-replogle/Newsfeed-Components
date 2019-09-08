@@ -147,7 +147,6 @@ function articleCreator(title, date, firstParagraph, secondParagraph, thirdParag
   span.textContent = 'click Here';
   div.appendChild(span);
   span.addEventListener('click', () => {
-  console.log('hello world')
     div.classList.toggle('article-open');
   });
   console.log(span)
@@ -163,7 +162,7 @@ let newArticle = data.map((data) => {
 });
 
 //add articles to container with forEach
-newArticle.forEach((component) => {
-  articles.appendChild(component);
+newArticle.forEach((article) => {
+  articles.appendChild(article);
 });
 
