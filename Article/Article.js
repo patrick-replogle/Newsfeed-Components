@@ -124,47 +124,97 @@ const data = [
 */
 
 //function to create the articles 
-
 function articleCreator(title, date, firstParagraph, secondParagraph, thirdParagraph) {
-  let div = document.createElement('div');
-  div.classList.add("article");
+  //add elements
+  let div = document.createElement('div')
   let h2 = document.createElement('h2')
-  h2.innerText = title;
-  div.appendChild(h2);
   let p1 = document.createElement('p')
-  p1.innerText = date;
-  p1.classList.add('date');
-  div.appendChild(p1);
   let p2 = document.createElement('p')
-  p2.innerText = firstParagraph;
-  div.appendChild(p2);
   let p3 = document.createElement('p')
-  p3.innerText = secondParagraph;
-  div.appendChild(p3);
   let p4 = document.createElement('p')
-  p4.innerText = thirdParagraph;
-  div.appendChild(p4);
   let span = document.createElement('span');
+  //add classes 
+  div.classList.add("article")
+  p1.classList.add('date')
   span.classList.add('expandButton');
-  span.textContent = 'click Here';
+  //add text
+  h2.innerText = title;
+  p1.innerText = date;
+  p2.innerText = firstParagraph;
+  p3.innerText = secondParagraph;
+  p4.innerText = thirdParagraph;
+  span.textContent = 'Click Here';
+  //append to div
+  div.appendChild(h2);
+  div.appendChild(p1);
+  div.appendChild(p2);
+  div.appendChild(p3);
+  div.appendChild(p4);
   div.appendChild(span);
+  //add event listener
   span.addEventListener('click', () => {
     div.classList.toggle('article-open');
   });
-
+  //return finished article(div)
   return div;
 }
 //add container that articles are to be added to
-let articles = document.querySelector('.articles');
+const articles = document.querySelector('.articles');
 
 //map out data and create/save newArticles for use later
-let newArticle = data.map((data) => {
-  let newArticle = articleCreator(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph)
-  return newArticle;
+const newArticle = data.map((data) => {
+  let article = articleCreator(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph)
+  return article;
 });
 
 //add articles to container with forEach
 newArticle.forEach((article) => {
   articles.appendChild(article);
 });
+
+
+//pre cleaned up version
+// function articleCreator(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+//   let div = document.createElement('div');
+//   div.classList.add("article");
+//   let h2 = document.createElement('h2')
+//   h2.innerText = title;
+//   div.appendChild(h2);
+//   let p1 = document.createElement('p')
+//   p1.innerText = date;
+//   p1.classList.add('date');
+//   div.appendChild(p1);
+//   let p2 = document.createElement('p')
+//   p2.innerText = firstParagraph;
+//   div.appendChild(p2);
+//   let p3 = document.createElement('p')
+//   p3.innerText = secondParagraph;
+//   div.appendChild(p3);
+//   let p4 = document.createElement('p')
+//   p4.innerText = thirdParagraph;
+//   div.appendChild(p4);
+//   let span = document.createElement('span');
+//   span.classList.add('expandButton');
+//   span.textContent = 'click Here';
+//   div.appendChild(span);
+
+//   span.addEventListener('click', () => {
+//     div.classList.toggle('article-open');
+//   });
+//   return div;
+// }
+// //add container that articles are to be added to
+// const articles = document.querySelector('.articles');
+
+// //map out data and create/save newArticles for use later
+// const newArticle = data.map((data) => {
+//   let article = articleCreator(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph)
+//   return article;
+// });
+
+// //add articles to container with forEach
+// newArticle.forEach((article) => {
+//   articles.appendChild(article);
+// });
+
 
